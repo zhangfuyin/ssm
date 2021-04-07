@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhangfuyin.dao.StudentDao">
+    <select id="selectById" resultType="com.zhangfuyin.entity.Student">
+        select * from t_student where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.zhangfuyin.entity.Student" useGeneratedKeys="true" keyProperty="id" >
+
+        insert  into t_student(`name` , age) values (#{name},#{age})
+
+
+    </insert>
+
+    <insert id="insertStu"  parameterType="com.zhangfuyin.entity.Student">
+        <selectKey order="AFTER" keyProperty="id" keyColumn="id" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert  into t_student(`name` , age) values (#{name},#{age})
+    </insert>
+
+</mapper>
