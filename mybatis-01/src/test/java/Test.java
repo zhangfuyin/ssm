@@ -1,4 +1,6 @@
+import com.zhangfuyin.dao.ClassesDao;
 import com.zhangfuyin.dao.StudentDao;
+import com.zhangfuyin.entity.Classes;
 import com.zhangfuyin.entity.Student;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -46,5 +48,16 @@ public class Test {
         Student student = new Student("王五",39);
         studentDao.insertStu(student);
         System.out.println(student);
+    }
+
+    @org.junit.Test
+    public void test4()throws Exception{
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        ClassesDao classesDao = sqlSession.getMapper(ClassesDao.class);
+
+        System.out.println(classesDao.selectById(1));
     }
 }

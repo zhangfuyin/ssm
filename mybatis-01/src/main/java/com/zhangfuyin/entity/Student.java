@@ -17,6 +17,11 @@ public class Student {
 
     private  int age;
 
+    /**
+     * 班级ID
+     */
+    private int classesId;
+
     public Integer getId() {
         return id;
     }
@@ -39,6 +44,14 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getClassesId() {
+        return classesId;
+    }
+
+    public void setClassesId(int classesId) {
+        this.classesId = classesId;
     }
 
     @Override
