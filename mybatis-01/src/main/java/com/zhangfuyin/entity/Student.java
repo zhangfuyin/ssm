@@ -18,6 +18,11 @@ public class Student {
     private  int age;
 
     /**
+     * 班级信息
+     */
+    private Classes classes;
+
+    /**
      * 班级ID
      */
     private int classesId;
@@ -54,12 +59,22 @@ public class Student {
         this.classesId = classesId;
     }
 
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", classes=" + classes +
+                ", classesId=" + classesId +
                 '}';
     }
 }

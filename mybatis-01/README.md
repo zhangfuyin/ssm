@@ -37,5 +37,29 @@
            
     ```
      
- * 多对一
+ * 多对一(一个班级对应多个学生)
+    ```
+        <sql id="Student_Classes_Sql">
+                ts.id, ts.name ,ts.classes_id, ts.age ,tc.id as classes_id, tc.cname
+        </sql>
+        
+        <resultMap id="BaseResultMap" type="com.zhangfuyin.entity.Student">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+            <result column="age" property="age"/>
+            <result column="classes_id" property="classesId"/>
+            <association property="classes" javaType="com.zhangfuyin.entity.Classes">
+                <id column="classes_id" property="id"/>
+                <result column="cname" property="cname"/>
+            </association>
+        </resultMap>
+    
+        <select id="selectById" resultMap="BaseResultMap">
+            select <include refid="Student_Classes_Sql"/>  from t_student ts
+            left join  t_classes tc  on  ts.classes_id = tc.id
+            where ts.id = #{id}
+        </select>
+    
+    ```
+ 
  * 多对多
