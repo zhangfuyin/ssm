@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 班级
  */
-public class Classes {
+public class Classes implements Serializable {
 
     private Integer id;
 

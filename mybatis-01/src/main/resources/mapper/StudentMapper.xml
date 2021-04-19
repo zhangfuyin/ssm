@@ -5,6 +5,8 @@
 
 <mapper namespace="com.zhangfuyin.dao.StudentDao">
 
+    <cache/>
+
     <sql id="Student_Classes_Sql">
         ts.id, ts.name ,ts.classes_id, ts.age ,tc.id as classes_id, tc.cname
     </sql>
